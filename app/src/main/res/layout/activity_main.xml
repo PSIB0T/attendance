@@ -7,26 +7,11 @@
     tools:context="com.droid.psib0t.attendance.MainActivity">
 
     <LinearLayout
+        android:id="@+id/mainView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:padding="@dimen/activity_horizontal_margin"
         android:orientation="vertical">
 
-
-        <Button
-            android:id="@+id/datePickerButton"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/colorAccent"
-            android:text="Choose date"
-            android:textColor="@android:color/black" />
-
-        <TextView
-            android:id="@+id/selectedItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
     </LinearLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNav"
