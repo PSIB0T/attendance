@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -40,7 +41,7 @@ public class AddStudentFragment extends Fragment {
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference tempReference = ((MainActivity) getActivity()).databaseReference;
+                DatabaseReference tempReference = FirebaseDatabase.getInstance().getReference("students");
                 String key = tempReference.push().getKey();
 
                 Student student = new Student(firstName.getText().toString(), lastName.getText().toString(), Integer.parseInt(rollNo.getText().toString()));

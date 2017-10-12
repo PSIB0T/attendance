@@ -6,18 +6,18 @@
         android:id="@+id/action_addAttendance"
         android:enabled="true"
         android:icon="@drawable/googleg_standard_color_18"
-        android:title="Favourites"
+        android:title="Attendance"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_schedules"
+        android:id="@+id/action_listStudents"
         android:enabled="true"
         android:icon="@drawable/googleg_standard_color_18"
-        android:title="Favourites"
+        android:title="Students"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_addStudent"
         android:enabled="true"
         android:icon="@drawable/googleg_standard_color_18"
-        android:title="Favourites"
+        android:title="Add student"
         app:showAsAction="ifRoom" />
 </menu>

@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.action_addAttendance:
                     navFragment = new AddAttendanceFragment();
                     break;
-                case R.id.action_schedules:
-                    return true;
+                case R.id.action_listStudents:
+                    navFragment = new StudentList();
+                    break;
                 case R.id.action_addStudent:
                     navFragment = new AddStudentFragment();
                     break;
