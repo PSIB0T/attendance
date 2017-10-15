@@ -15,6 +15,12 @@
         android:text="Choose date"
         android:textColor="@android:color/black" />
 
+    <Switch
+        android:id="@+id/checkOrUncheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AllPresent / AllAbsent" />
+
     <ListView
         android:id="@+id/attendanceListView"
         android:layout_width="match_parent"

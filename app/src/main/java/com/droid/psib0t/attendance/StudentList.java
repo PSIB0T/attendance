@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class StudentList extends Fragment {
 
     private ListView studentListView;
-    private String[] studentNames;
     private ArrayList<Student> students;
     ChildEventListener listener;
     DatabaseReference tempReference;

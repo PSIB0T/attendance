@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,14 +39,14 @@ public class AttendanceAdapter extends ArrayAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public StudentCheck getItem(int position) {
         return dataSet.get(position);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         final View result;
         if (convertView == null) {
             viewHolder = new ViewHolder();
@@ -60,6 +61,19 @@ public class AttendanceAdapter extends ArrayAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
             result=convertView;
         }
+
+        final StudentCheck student = getItem(position);
+
+        viewHolder.txtName.setText(student.firstName + " " + student.lastName);
+        viewHolder.checkBox.setChecked(student.isChecked);
+
+        result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                student.isChecked = !student.isChecked;
+                viewHolder.checkBox.setChecked(student.isChecked);
+            }
+        });
 
 
         return  result;
