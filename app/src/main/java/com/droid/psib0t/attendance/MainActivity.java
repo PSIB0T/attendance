@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
 
     FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
+    DatabaseReference studentReference;
+    DatabaseReference attendanceReference;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("students");
+        studentReference = FirebaseDatabase.getInstance().getReference("students");
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNav);

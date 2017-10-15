@@ -4,11 +4,13 @@ package com.droid.psib0t.attendance;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -25,6 +27,8 @@ public class AddAttendanceFragment extends Fragment {
     Calendar calendar;
 
     Button datePickerButton;
+
+    ListView listView;
 
     public AddAttendanceFragment() {
         // Required empty public constructor
@@ -52,13 +56,15 @@ public class AddAttendanceFragment extends Fragment {
                         year = i;
                         month = i1;
                         day = i2;
-
+                        calendar.set(i, i1, i2);
                         datePickerButton.setText(day + "/" + month + "/" + year);
                     }
                 }, year, month, day);
                 datePickerDialog.show();
             }
         });
+
+        listView = (ListView) view.findViewById(R.id.attendanceListView);
 
         return view;
     }

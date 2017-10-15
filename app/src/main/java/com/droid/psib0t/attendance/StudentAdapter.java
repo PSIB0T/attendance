@@ -13,13 +13,13 @@ import java.util.ArrayList;
  * Created by arvindo on 12/10/17.
  */
 
-public class StudentAdapter<T> extends BaseAdapter{
+public class StudentAdapter extends BaseAdapter{
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private T[] dataSource;
+    private ArrayList<Student> dataSource;
 
-    StudentAdapter(Context context, T[] items){
+    StudentAdapter(Context context, ArrayList<Student> items){
         mContext = context;
         dataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -28,12 +28,12 @@ public class StudentAdapter<T> extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return dataSource.length;
+        return dataSource.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return dataSource[i];
+        return dataSource.get(i);
     }
 
     @Override
@@ -45,11 +45,13 @@ public class StudentAdapter<T> extends BaseAdapter{
     public View getView(int i, View view, ViewGroup viewGroup) {
         View rowView = mInflater.inflate(R.layout.list_item_student, viewGroup, false);
 
-        TextView titleTextView = (TextView) rowView.findViewById(R.id.recipe_list_title);
+        TextView titleTextView = (TextView) rowView.findViewById(R.id.student_list_title);
+        TextView subTextView = (TextView) rowView.findViewById(R.id.student_list_subtitle);
 
-        T item = (T) this.getItem(i);
+        Student item = (Student) this.getItem(i);
 
-        titleTextView.setText(item.toString());
+        titleTextView.setText(item.firstName + " " + item.lastName);
+        subTextView.setText(item.rollNo + "");
 
         return rowView;
     }

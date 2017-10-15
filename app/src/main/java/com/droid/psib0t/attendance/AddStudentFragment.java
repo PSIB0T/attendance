@@ -3,13 +3,16 @@ package com.droid.psib0t.attendance;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,14 +44,30 @@ public class AddStudentFragment extends Fragment {
         addStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference tempReference = FirebaseDatabase.getInstance().getReference("students");
+                DatabaseReference tempReference = ((MainActivity) getActivity()).studentReference;
                 String key = tempReference.push().getKey();
+                String fname = firstName.getText().toString();
+                String lname =  lastName.getText().toString();
+                String rNo = rollNo.getText().toString();
+                if(fname.isEmpty() || lname.isEmpty() || rNo.isEmpty()){
+                    Toast.makeText(getActivity(), "One or more fields are empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                Student student = new Student(firstName.getText().toString(), lastName.getText().toString(), Integer.parseInt(rollNo.getText().toString()));
+                Student student = new Student(fname, lname, Integer.parseInt(rNo));
 
                 FirebaseUser user = ((MainActivity) getActivity()).firebaseAuth.getCurrentUser();
 
-                tempReference.child(key).setValue(student);
+                tempReference.child(key).setValue(student, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if(databaseError != null) {
+                            Toast.makeText(getActivity(), "Error saving data", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getActivity(), "Data saved successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
             }
         });
