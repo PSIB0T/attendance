@@ -36,7 +36,7 @@ public class AddAttendanceFragment extends Fragment {
 
     Calendar calendar;
 
-    Button datePickerButton;
+    Button datePickerButton, addAttendance;
     ChildEventListener listener;
     Switch checkOrUncheck;
 
@@ -62,6 +62,9 @@ public class AddAttendanceFragment extends Fragment {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         datePickerButton = (Button) view.findViewById(R.id.datePickerButton);
         checkOrUncheck = (Switch) view.findViewById(R.id.checkOrUncheck);
+        addAttendance = (Button) view.findViewById(R.id.submitAttendance);
+
+        checkOrUncheck.setChecked(true);
 
         datePickerButton.setText(day + "/" + month + "/" + year);
 
@@ -79,6 +82,22 @@ public class AddAttendanceFragment extends Fragment {
                     }
                 }, year, month, day);
                 datePickerDialog.show();
+            }
+        });
+
+        addAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                long time = calendar.getTimeInMillis();
+                for(StudentCheck student: students) {
+                    Log.d("isChecked", student.firstName + " " +  student.isChecked + "");
+                    if(student.isChecked){
+                        student.addDate(time);
+                        tempReference.child(student.id).setValue(student);
+                        Log.d("ggwp", "Attendance checked!");
+                    }
+                }
+                
             }
         });
 
