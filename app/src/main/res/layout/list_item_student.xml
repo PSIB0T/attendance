@@ -18,7 +18,7 @@
         android:contentDescription="Desc"/>
 
     <TextView
-        android:id="@+id/recipe_list_detail"
+        android:id="@+id/studentAttendance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/recipe_list_detail"
+        android:layout_toStartOf="@id/studentAttendance"
         android:layout_toEndOf="@id/recipe_list_thumbnail">
 
         <TextView

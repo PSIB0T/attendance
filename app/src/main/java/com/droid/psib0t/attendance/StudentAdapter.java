@@ -47,11 +47,12 @@ public class StudentAdapter extends BaseAdapter{
 
         TextView titleTextView = (TextView) rowView.findViewById(R.id.student_list_title);
         TextView subTextView = (TextView) rowView.findViewById(R.id.student_list_subtitle);
-
+        TextView studentAttendance = (TextView) rowView.findViewById(R.id.studentAttendance);
         Student item = (Student) this.getItem(i);
 
         titleTextView.setText(item.firstName + " " + item.lastName);
         subTextView.setText(item.rollNo + "");
+        studentAttendance.setText(item.presentDates.size() + "");
 
         return rowView;
     }
