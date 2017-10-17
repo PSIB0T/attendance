@@ -17,10 +17,11 @@ public class Student {
 
     }
 
-    Student(String firstName, String lastName, int rollNo) {
+    Student(String firstName, String lastName, String id, int rollNo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.rollNo = rollNo;
+        this.id = id;
         this.presentDates = new ArrayList<Long>();
     }
 

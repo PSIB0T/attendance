@@ -13,8 +13,10 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +41,7 @@ public class AddAttendanceFragment extends Fragment {
     Button datePickerButton, addAttendance;
     ChildEventListener listener;
     Switch checkOrUncheck;
+    ProgressBar attendanceProgress;
 
     ListView listView;
     private ArrayList<StudentCheck> students;
@@ -63,6 +66,8 @@ public class AddAttendanceFragment extends Fragment {
         datePickerButton = (Button) view.findViewById(R.id.datePickerButton);
         checkOrUncheck = (Switch) view.findViewById(R.id.checkOrUncheck);
         addAttendance = (Button) view.findViewById(R.id.submitAttendance);
+        attendanceProgress = (ProgressBar) view.findViewById(R.id.saveAttendanceProgress);
+        attendanceProgress.setVisibility(View.GONE);
 
         checkOrUncheck.setChecked(true);
 
@@ -88,6 +93,7 @@ public class AddAttendanceFragment extends Fragment {
         addAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                attendanceProgress.setVisibility(View.VISIBLE);
                 long time = calendar.getTimeInMillis();
                 for(StudentCheck student: students) {
                     Log.d("isChecked", student.firstName + " " +  student.isChecked + "");
@@ -97,7 +103,8 @@ public class AddAttendanceFragment extends Fragment {
                         Log.d("ggwp", "Attendance checked!");
                     }
                 }
-                
+                attendanceProgress.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "Data saved successfully", Toast.LENGTH_SHORT).show();
             }
         });
 

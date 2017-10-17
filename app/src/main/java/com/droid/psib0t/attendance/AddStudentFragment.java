@@ -54,7 +54,7 @@ public class AddStudentFragment extends Fragment {
                     return;
                 }
 
-                Student student = new Student(fname, lname, Integer.parseInt(rNo));
+                Student student = new Student(fname, lname, key, Integer.parseInt(rNo));
 
                 FirebaseUser user = ((MainActivity) getActivity()).firebaseAuth.getCurrentUser();
 

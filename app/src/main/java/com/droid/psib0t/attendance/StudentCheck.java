@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class StudentCheck extends Student{
-    public boolean isChecked = false;
+    public boolean isChecked = true;
 
     StudentCheck() {
         this.presentDates = new ArrayList<Long>();

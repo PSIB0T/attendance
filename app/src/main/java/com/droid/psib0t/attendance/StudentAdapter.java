@@ -52,7 +52,12 @@ public class StudentAdapter extends BaseAdapter{
 
         titleTextView.setText(item.firstName + " " + item.lastName);
         subTextView.setText(item.rollNo + "");
-        studentAttendance.setText(item.presentDates.size() + "");
+        try{
+            studentAttendance.setText(item.presentDates.size() + "");
+        }catch (Exception e){
+            studentAttendance.setText("0");
+        }
+
 
         return rowView;
     }
